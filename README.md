@@ -13,6 +13,23 @@ This is a TypeScript library for building a simple data footprint as a hash. It'
 
 For anyone who needs to have consistent ways to compare data.
 
+### Description
+
+The Peeel&trade; algorithm is used to create a unique string from complementary data of a contact data (like in the `hashData` field of the *Controllers* in the Fruuut&trade; and Rooot&trade; systems).
+
+It follows the rules below:
+- each source data must first be normalized according to the Empreinte Sociométrique's standards;
+- the normalized data should then be hashed using the SHA-256 algorithm applied twice;
+- the hashed data should then be concatenated in the exact order of the complementaries' code (eg. hashed date of birth then hashed firstname for `dob+firstname`);
+- this concatenation should itself be hashed using the SHA-256 algorithm twice to form the final hash data.
+
+The result passed to the `hashData` field is the hexadecimal string representation of the returned hash.
+
+As of this version, the available complementary data are the following:
+- `dob`: a date of birth (respecting the ISO format, ie. `YYYYMMDD`);
+- `firstname`: a first name;
+- `lastname`: a last name.
+
 
 ### Usage
 
@@ -46,7 +63,7 @@ console.assert(complementaries === compl)
 
 ##### Dependencies
 
-This library relies on the following peer dependencies:
+This library relies on the following peer dependency:
 * [`es-normalizer`](https://www.npmjs.com/package/es-normalizer).
 
 
