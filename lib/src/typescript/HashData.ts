@@ -23,12 +23,13 @@ export interface Source {
 }
 
 /**
- * Build takes an array of source data and returns the `hashData` value as well as the complementaries sequence.
+ * Takes an array of source data and returns the `hashData` value as well as the complementaries sequence.
  * 
  * IMPORTANT: any date must be provided in the ISO format, ie. `YYYYMMDD` (eg. "20200923").
  * 
  * @param {ReadonlyArray<Source>} src The sequence of source data to use
  * @returns the tuple (hashData, complementaries)
+ * @throws {NoValidDataError}
  */
 export const build = (src: ReadonlyArray<Source>): [HashData, ReadonlyArray<Complementary>] => {
   const compl = new Array<Complementary>()
@@ -54,7 +55,7 @@ export const build = (src: ReadonlyArray<Source>): [HashData, ReadonlyArray<Comp
   }).filter(_ => _) as ReadonlyArray<string>
 
   if (normalized.length === 0) {
-    throw new Error('no valid data')
+    throw new NoValidDataError()
   }
 
   // 2- Hash each normalized data
@@ -64,4 +65,11 @@ export const build = (src: ReadonlyArray<Source>): [HashData, ReadonlyArray<Comp
   const hashed = hash(Buffer.concat(hashedData))
 
   return [hashed.toString('hex'), compl]
+}
+
+export class NoValidDataError extends Error {
+  constructor() {
+    super('no valid data')
+    Object.setPrototypeOf(this, NoValidDataError.prototype)
+  }
 }
