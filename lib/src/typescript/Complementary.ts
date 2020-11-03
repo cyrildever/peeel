@@ -5,9 +5,11 @@ export const SEP_COMPLEMENTARY = '+'
 // TODO Enrich with new complementary data types
 export const DATE_OF_BIRTH: Complementary = 'dob'
 export const FIRST_NAME: Complementary = 'firstname'
+export const GENDER: Complementary = 'gender'
 export const LAST_NAME: Complementary = 'lastname'
+export const MIDDLE_NAMES: Complementary = 'middle'
 
-const availableComplementaries = [DATE_OF_BIRTH, FIRST_NAME, LAST_NAME]
+const availableComplementaries = [DATE_OF_BIRTH, FIRST_NAME, GENDER, LAST_NAME, MIDDLE_NAMES]
 
 /**
  * Build the string representation of complementaries

@@ -1,6 +1,6 @@
 {
   "name": "peeel",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "Simple data footprint for the Fruuut system",
   "main": "dist/lib/src/typescript/index.js",
   "types": "dist/lib/src/typescript/index.d.ts",
@@ -33,7 +33,7 @@
   "devDependencies": {
     "@types/chai": "^4.2.14",
     "@types/mocha": "^5.2.7",
-    "@types/node": "^13.13.29",
+    "@types/node": "^13.13.30",
     "@typescript-eslint/eslint-plugin": "~2.30.0",
     "@typescript-eslint/parser": "~2.30.0",
     "browserify": "16.5.0",

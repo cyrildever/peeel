@@ -1,6 +1,6 @@
 import * as esNormalizer from 'es-normalizer'
 
-import { Complementary, DATE_OF_BIRTH, FIRST_NAME, LAST_NAME } from './Complementary'
+import { Complementary, DATE_OF_BIRTH, FIRST_NAME, GENDER, LAST_NAME, MIDDLE_NAMES } from './Complementary'
 import { hash } from '.'
 
 // The Peeel algorithm is used to create a unique string from complementary data
@@ -44,7 +44,13 @@ export const build = (src: ReadonlyArray<Source>): [HashData, ReadonlyArray<Comp
       case FIRST_NAME:
         norm = esNormalizer.normalize(s.data, esNormalizer.FirstName).getOrElse('')
         break
+      case GENDER:
+        norm = esNormalizer.normalize(s.data, esNormalizer.Title).getOrElse('')
+        break
       case LAST_NAME:
+        norm = esNormalizer.normalize(s.data, esNormalizer.Any).getOrElse('')
+        break
+      case MIDDLE_NAMES:
         norm = esNormalizer.normalize(s.data, esNormalizer.Any).getOrElse('')
         break
     }

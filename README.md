@@ -27,8 +27,10 @@ The result passed to the `hashData` field is the hexadecimal string representati
 
 As of this version, the available complementary data are the following:
 - `dob`: a date of birth (respecting the ISO format, ie. `YYYYMMDD`);
+- `gender`: `1` for male, `2` for female, or `0` for unknown;
 - `firstname`: a first name;
-- `lastname`: a last name.
+- `lastname`: a last name;
+- `middle`: the middle names or initials (eg. the `F.` in `John F. Kennedy`).
 
 
 ### Usage
