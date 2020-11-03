@@ -33,6 +33,17 @@ describe('Complementary', () => {
       const found = complementariesToString(arr)
       found.should.equal(expected)
     })
+    it('should not keep unknown complementaries unless specified', () => {
+      const expected = 'dob+firstname'
+      const arr1: ReadonlyArray<Complementary> = ['dob', 'firstname', 'not a valid complementary']
+      let found = complementariesToString(arr1)
+      found.should.equal(expected)
+
+      const allKept = 'dob+firstname+kept'
+      const arr2: ReadonlyArray<Complementary> = ['dob', 'firstname', 'kept']
+      found = complementariesToString(arr2, true)
+      found.should.equal(allKept)
+    })
   })
   describe('parseComplementaries', () => {
     it('should parse a string to the appropriate array of complementary data types', () => {
