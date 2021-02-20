@@ -1,7 +1,7 @@
 {
   "name": "peeel",
   "version": "1.0.0",
-  "description": "Simple data footprint for the Fruuut system",
+  "description": "Compact data footprint for the Fruuut system",
   "main": "dist/lib/src/typescript/index.js",
   "types": "dist/lib/src/typescript/index.d.ts",
   "scripts": {
@@ -21,7 +21,7 @@
     "fruuut",
     "empreinte sociometrique"
   ],
-  "author": "Cyril Dever <cdever@edgewhere>",
+  "author": "Cyril Dever <cdever@edgewhere.fr>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/cyrildever/peeel/issues"

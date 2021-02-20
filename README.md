@@ -1,5 +1,5 @@
 # peeel
-_Compact idsentity footprint_
+_Compact identity footprint_
 
 ![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/cyrildever/peeel)
 ![npm](https://img.shields.io/npm/dw/peeel)
@@ -31,6 +31,8 @@ As of this version, the available complementary data are the following:
 - `firstname`: a first name;
 - `lastname`: a last name;
 - `middle`: the middle names or initials (eg. the `F.` in `John F. Kennedy`).
+
+For further details, you might want to check our [white paper](documentation/src/latex/peeel_whitepaper.pdf).
 
 
 ### Usage
