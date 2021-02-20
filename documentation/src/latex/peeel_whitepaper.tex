@@ -189,6 +189,48 @@ eg. $$(\texttt{29023e[\dots]e9a2}, \{ \texttt{firstname}, \texttt{dob} \})$$
     We define this set of available codes as $\mathcal{\textbf{C}}$.
 \end{definition}
 
+%----------------------------------------------------------------------------------------
+
+\section{Algorithm}
+
+Let $N_{ES}: \omega \to \omega$ be the normalizing function through the Empreinte Sociométrique standard for the input data\footnote{for example, our 
+Javascript \texttt{es-normalizer} library: \small\url{https://npmjs.com/package/es-normalizer}}, and $\mathfrak{h}()$ the cryptographic hashing 
+function\footnote{we use \texttt{SHA-256} for its wide adoption in all the major browsers}.
+
+And let $\chi_1, \chi_2, \dots, \chi_n$ be an ordered set of complementary data.
+
+Algorithm \ref{algo:peeel} describes how a Peeel is built.
+\begin{algorithm}
+    \SetKwProg{throw}{throw}{}{}
+    \KwIn{A set of complementary data $\{ \chi_1, \chi_2, \dots, \chi_n \}$}
+    \KwOut{The hashed data and its set of used codes, or an error}
+    initialize the set of normalized hashed items $\mathcal{H} \gets \emptyset$,
+        and the ordered set of kept codes $\mathcal{C}_{k} \gets \emptyset$; \\
+    \For{$i \gets 0$ \KwTo $n$ \KwBy $1$}{
+        \If{$\chi_i^c \not\in \mathcal{\textbf{C}}$}{
+            \Continue;
+        }
+        $\mathcal{H} \gets \mathfrak{h}\left( N_{ES}(\chi_i^d) \right)$; \\
+        $\mathcal{C}_{k} \gets \chi_i^c$; \\
+    }
+    \If{$|\mathcal{H}| = 0 \vee |\mathcal{K}| \neq |\mathcal{H}|$}{
+        \throw{invalid input}{}
+    }
+    initialize the concatenation string $S$; \\
+    \For{$i \gets 0$ \KwTo $|\mathcal{H}|$ \KwBy $1$}{
+        $S \gets S \mathbin\Vert \mathcal{H}_i$; \\
+    }
+    build the hexadecimal string $hexStr := \Big( \mathfrak{h}(S) \Big)_{16}$ \\
+    \Return{$(hexStr, \mathcal{C}_{k})$;}
+    \caption{Peeel\texttrademark~algorithm}
+    \label{algo:peeel}
+\end{algorithm}
+
+The returned set of used codes should be in the same order than the input set of complementary data codes.
+In other words, if the input set is totally valid, we should have:$$
+    \mathcal{C}_{k} := \{ \chi_1^c, \chi_2^c, \dots, \chi_n^c \}
+$$
+
 
 % \vfill\eject % To force break column if need be
 % \tableofcontents % Uncomment to add a table of contents
