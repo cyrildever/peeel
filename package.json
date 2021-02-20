@@ -1,6 +1,6 @@
 {
   "name": "peeel",
-  "version": "0.2.2",
+  "version": "1.0.0",
   "description": "Simple data footprint for the Fruuut system",
   "main": "dist/lib/src/typescript/index.js",
   "types": "dist/lib/src/typescript/index.d.ts",
