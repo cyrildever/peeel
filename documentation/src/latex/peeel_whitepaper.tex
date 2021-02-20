@@ -146,6 +146,49 @@ hash function would suffice. But what if you also need to be sure of its ownersh
 The present document describes a simple yet effective way to build such a simple "owned" footprint.
 We call it the Peeel\texttrademark.
 
+%----------------------------------------------------------------------------------------
+
+\section{Quick Description}
+
+The Peeel\texttrademark~algorithm is used to create a unique string from contact data that may eventually serve as some proof of ownership to another 
+data with which it would be associated.
+
+It follows the simple rules below:
+\begin{itemize}
+    \item Each source data must first be normalized according to the \emph{Empreinte Sociométrique} standards \cite{empreinteSociometrique:cyd};
+    \item The normalized data is then hashed using the \texttt{SHA-256} algorithm applied twice;
+    \item The hashed data is then concatenated in the exact order of the complementaries code, eg. hashed date of birth then hashed firstname 
+        for a \texttt{"dob+firstname"} code;
+    \item This concatenation is next itself hashed using the \texttt{SHA-256} algorithm twice to form the final hash data.
+\end{itemize}
+
+The final result is a tuple of the hexadecimal string representation of the returned hash and the set of codes used,
+eg. $$(\texttt{29023e[\dots]e9a2}, \{ \texttt{firstname}, \texttt{dob} \})$$
+
+\begin{definition}[Complementary Data]
+    \label{complementaryData}
+    We call complementary data $\chi_i$ of an identity $i$ each different contact data that would be used to build his Peeel.
+    It is defined by the tuple of its code $\chi^c$ and its associated data source $\chi^d$, eg.$$
+        \chi_i \gets \left\{
+            \begin{array}{l}
+                \chi_i^c := \texttt{firstname} \\ \\
+                \chi_i^d := \textrm{Cyril} \\
+            \end{array}
+        \right.
+    $$
+
+    As of this version, the available complementary data codes could be one of the following:
+    \begin{itemize}
+        \item \texttt{dob}: a date of birth (respecting the ISO format, ie. \texttt{YYYYMMDD});
+        \item \texttt{gender}: $1$ for male, $2$ for female, or $0$ for unknown or indeterminate;
+        \item \texttt{firstname}: a first name;
+        \item \texttt{lastname}: a last name;
+        \item \texttt{middle}: the middle names or initials (eg. the \emph{F.} in \emph{John F. Kennedy}).
+    \end{itemize}
+
+    We define this set of available codes as $\mathcal{\textbf{C}}$.
+\end{definition}
+
 
 % \vfill\eject % To force break column if need be
 % \tableofcontents % Uncomment to add a table of contents
