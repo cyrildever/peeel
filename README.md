@@ -1,5 +1,5 @@
 # peeel
-_Simple data footprint_
+_Compact idsentity footprint_
 
 ![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/cyrildever/peeel)
 ![npm](https://img.shields.io/npm/dw/peeel)
@@ -7,11 +7,11 @@ _Simple data footprint_
 ![GitHub issues](https://img.shields.io/github/issues/cyrildever/peeel)
 ![NPM](https://img.shields.io/npm/l/peeel)
 
-This is a TypeScript library for building a simple data footprint as a hash. It's working in both the browser and a NodeJS environment.
+This is a TypeScript library for building a simple contact data footprint as a hash. It's working in both the browser and a NodeJS environment.
 
 ### Motivation
 
-For anyone who needs to have consistent ways to compare data.
+For anyone who needs to have consistent ways to compare identity data.
 
 ### Description
 
