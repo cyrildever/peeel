@@ -1,0 +1,265 @@
+% PEEEL white paper
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[twoside,twocolumn]{article}
+
+\usepackage{blindtext} % Package to generate dummy text throughout this template 
+
+\usepackage[sc]{mathpazo} % Use the Palatino font
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+%\linespread{1.05} % Line spacing - Palatino needs more space between lines
+\usepackage{microtype} % Slightly tweak font spacing for aesthetics
+\usepackage{eufrak}
+\usepackage{graphicx} % For \scalebox
+
+\usepackage[english]{babel} % Language hyphenation and typographical rules
+
+\usepackage[hmarginratio=1:1,top=32mm,columnsep=20pt]{geometry} % Document margins
+\usepackage[hang, small,labelfont=bf,up,textfont=it,up]{caption} % Custom captions under/above floats in tables or figures
+\usepackage{booktabs} % Horizontal rules in tables
+
+\usepackage{lettrine} % The lettrine is the first enlarged letter at the beginning of the text
+
+\usepackage{enumitem} % Customized lists
+\setlist[itemize]{noitemsep} % Make itemize lists more compact
+
+\usepackage{abstract} % Allows abstract customization
+\renewcommand{\abstractnamefont}{\normalfont\bfseries} % Set the "Abstract" text to bold
+\renewcommand{\abstracttextfont}{\normalfont\small\itshape} % Set the abstract itself to small italic text
+
+\usepackage{titlesec} % Allows customization of titles
+\renewcommand\thesection{\Roman{section}} % Roman numerals for the sections
+\renewcommand\thesubsection{\arabic{subsection}} % roman numerals only for subsections
+\titleformat{\section}[block]{\Large\scshape\centering}{\thesection.}{1em}{} % Change the look of the section titles
+\titleformat{\subsection}[block]{\large\scshape}{\thesubsection.}{1em}{} % Change the look of the section titles
+
+\usepackage{fancyhdr} % Headers and footers
+\pagestyle{fancy} % All pages have headers and footers
+\fancyhead{} % Blank out the default header
+\fancyfoot{} % Blank out the default footer
+\fancyhead[C]{Compact Identity Footprint $\bullet$ Cyril Dever} % Custom header text
+\fancyfoot[RO,LE]{\thepage} % Custom footer text
+\setlength{\headheight}{14pt}
+
+\usepackage{titling} % Customizing the title section
+
+\usepackage{hyperref} % For hyperlinks in the PDF
+
+\usepackage[symbol]{footmisc} % To use special character in footnote
+\renewcommand{\thefootnote}{\arabic{footnote}}
+
+\usepackage{outlines}
+\usepackage[font=itshape]{quoting}
+
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\SetKw{Continue}{continue}
+\SetKw{KwBy}{by}
+
+%----------------------------------------------------------------------------------------
+%	FUNCTIONS
+%----------------------------------------------------------------------------------------
+
+\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\bsfnote}{\textsuperscript{*}} % for reference to the base64 string note
+\newcommand{\hexnote}{\textsuperscript{$\dagger$}} % for reference to the hex string note
+\newcommand{\mod}[1]{\ \mathrm{mod}\ #1}
+
+%----------------------------------------------------------------------------------------
+%	LISTINGS
+%----------------------------------------------------------------------------------------
+
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Note}
+\newtheorem*{recall}{Recall}
+
+%----------------------------------------------------------------------------------------
+%	FIGURES
+%----------------------------------------------------------------------------------------
+
+\usepackage{tikz}
+\usepackage{caption}
+
+\usetikzlibrary{shapes.geometric, arrows, calc, positioning}
+
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, text width=1.7cm, inner sep=0.4cm, draw=black]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black]
+\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, inner sep=-0.1cm, draw=black]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+\tikzset{XOR/.style={draw,circle,append after command={
+        [shorten >=\pgflinewidth, shorten <=\pgflinewidth,]
+        (\tikzlastnode.north) edge (\tikzlastnode.south)
+        (\tikzlastnode.east) edge (\tikzlastnode.west)
+        }
+    }
+}
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\usepackage[english]{datetime2}
+\DTMsavedate{thedate}{2020-09-23}
+
+\setlength{\droptitle}{-5\baselineskip} % Move the title up
+
+\pretitle{\begin{center}\Large\bfseries}
+\posttitle{\end{center}}
+\title{Compact Identity Footprint} % Title
+\author{%
+    \textsc{Cyril Dever}\\ % Name
+    \normalsize Edgewhere \\ % Institution
+}
+% \date{\today} % Leave empty to omit a date
+\date{\DTMusedate{thedate}}
+\renewcommand{\maketitlehookd}{%
+    \begin{abstract}
+        \noindent We define a compact identity footprint for anyone who needs to have compact pseudonymized representation of an identity. 
+        It should be used in conjunction with any other type of data footprint to associate the latter with its rightful owner.
+    \end{abstract}
+}
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+% Print the title
+\maketitle
+
+%----------------------------------------------------------------------------------------
+%	ARTICLE CONTENTS
+%----------------------------------------------------------------------------------------
+
+\section{Introduction}
+
+\lettrine[nindent=0em,lines=3]{S}ometimes, one needs a way to compare data without having access to its source. Usually, the use of any cryptographic 
+hash function would suffice. But what if you also need to be sure of its ownership?
+
+The present document describes a simple yet effective way to build such a simple "owned" footprint.
+We call it the Peeel\texttrademark.
+
+%----------------------------------------------------------------------------------------
+
+\section{Quick Description}
+
+The Peeel\texttrademark~algorithm is used to create a unique string from contact data that may eventually serve as some proof of ownership to another 
+data with which it would be associated.
+
+It follows the simple rules below:
+\begin{itemize}
+    \item Each source data must first be normalized according to the \emph{Empreinte Sociométrique} standards \cite{empreinteSociometrique:cyd};
+    \item The normalized data is then hashed using the \texttt{SHA-256} algorithm applied twice;
+    \item The hashed data is then concatenated in the exact order of the complementaries code, eg. hashed date of birth then hashed firstname 
+        for a \texttt{"dob+firstname"} code;
+    \item This concatenation is next itself hashed using the \texttt{SHA-256} algorithm twice to form the final hash data.
+\end{itemize}
+
+The final result is a tuple of the hexadecimal string representation of the returned hash and the set of codes used,
+eg. $$(\texttt{29023e[\dots]e9a2}, \{ \texttt{firstname}, \texttt{dob} \})$$
+
+\begin{definition}[Complementary Data]
+    \label{complementaryData}
+    We call complementary data $\chi_i$ of an identity $i$ each different contact data that would be used to build his Peeel.
+    It is defined by the tuple of its code $\chi^c$ and its associated data source $\chi^d$, eg.$$
+        \chi_i \gets \left\{
+            \begin{array}{l}
+                \chi_i^c := \texttt{firstname} \\ \\
+                \chi_i^d := \textrm{Cyril} \\
+            \end{array}
+        \right.
+    $$
+
+    As of this version, the available complementary data codes could be one of the following:
+    \begin{itemize}
+        \item \texttt{dob}: a date of birth (respecting the ISO format, ie. \texttt{YYYYMMDD});
+        \item \texttt{gender}: $1$ for male, $2$ for female, or $0$ for unknown or indeterminate;
+        \item \texttt{firstname}: a first name;
+        \item \texttt{lastname}: a last name;
+        \item \texttt{middle}: the middle names or initials (eg. the \emph{F.} in \emph{John F. Kennedy}).
+    \end{itemize}
+
+    We define this set of available codes as $\mathcal{\textbf{C}}$.
+\end{definition}
+
+%----------------------------------------------------------------------------------------
+
+\section{Algorithm}
+
+Let $N_{ES}: \omega \to \omega$ be the normalizing function through the Empreinte Sociométrique standard for the input data\footnote{for example, our 
+Javascript \texttt{es-normalizer} library: \small\url{https://npmjs.com/package/es-normalizer}}, and $\mathfrak{h}()$ the cryptographic hashing 
+function\footnote{we use \texttt{SHA-256} for its wide adoption in all the major browsers}.
+
+And let $\chi_1, \chi_2, \dots, \chi_n$ be an ordered set of complementary data.
+
+Algorithm \ref{algo:peeel} describes how a Peeel is built.
+\begin{algorithm}
+    \SetKwProg{throw}{throw}{}{}
+    \KwIn{A set of complementary data $\{ \chi_1, \chi_2, \dots, \chi_n \}$}
+    \KwOut{The hashed data and its set of used codes, or an error}
+    initialize the set of normalized hashed items $\mathcal{H} \gets \emptyset$,
+        and the ordered set of kept codes $\mathcal{C}_{k} \gets \emptyset$; \\
+    \For{$i \gets 0$ \KwTo $n$ \KwBy $1$}{
+        \If{$\chi_i^c \not\in \mathcal{\textbf{C}}$}{
+            \Continue;
+        }
+        $\mathcal{H} \gets \mathfrak{h}\left( N_{ES}(\chi_i^d) \right)$; \\
+        $\mathcal{C}_{k} \gets \chi_i^c$; \\
+    }
+    \If{$|\mathcal{H}| = 0 \vee |\mathcal{K}| \neq |\mathcal{H}|$}{
+        \throw{invalid input}{}
+    }
+    initialize the concatenation string $S$; \\
+    \For{$i \gets 0$ \KwTo $|\mathcal{H}|$ \KwBy $1$}{
+        $S \gets S \mathbin\Vert \mathcal{H}_i$; \\
+    }
+    build the hexadecimal string $hexStr := \Big( \mathfrak{h}(S) \Big)_{16}$ \\
+    \Return{$(hexStr, \mathcal{C}_{k})$;}
+    \caption{Peeel\texttrademark~algorithm}
+    \label{algo:peeel}
+\end{algorithm}
+
+The returned set of used codes should be in the same order than the input set of complementary data codes.
+In other words, if the input set is totally valid, we should have:$$
+    \mathcal{C}_{k} := \{ \chi_1^c, \chi_2^c, \dots, \chi_n^c \}
+$$
+
+%----------------------------------------------------------------------------------------
+
+\section{Usage}
+
+The main usage of the Peeel\texttrademark~algorithm is in association with another data to make it a kind of proof of ownership of this other data 
+in full respect of data privacy regulations such as GDPR or CCPA.
+
+For example, in our Consent Management Blockchain\cite{drd2:cyd}, we use it to link the consented data with the recorded transaction.
+That way, whenever a data is consented, we can make sure that the person who consents is the current rightful owner of the data and that further use 
+of the data by an eventual previous owner can't be possible anymore. And if we want proof of ownership, we just need to implement some sort of 
+questionnaire to rebuild the Peeel (without even knowing anything about it except for the codes and therefore the kind of question to ask).
+
+% \vfill\eject % To force break column if need be
+% \tableofcontents % Uncomment to add a table of contents
+
+%----------------------------------------------------------------------------------------
+%	REFERENCE LIST
+%----------------------------------------------------------------------------------------
+
+\begin{thebibliography}{99} % Bibliography
+
+\bibitem[1]{empreinteSociometrique:cyd}
+Cyril Dever. \emph{Système de traitement d'une base de données personnelle par un opérateur extérieur}, patent pending \texttt{FR1905778}, 2019.
+
+\bibitem[2]{drd2:cyd}
+Cyril Dever. \emph{Deferred Resolution Consensus Protocol on Double-Helix Double-Circuit Blockchains}, 2020.
+
+\end{thebibliography}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
