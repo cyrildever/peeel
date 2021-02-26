@@ -1,6 +1,6 @@
 {
   "name": "peeel",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Compact data footprint for the Fruuut system",
   "main": "dist/lib/src/typescript/index.js",
   "types": "dist/lib/src/typescript/index.d.ts",
@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/cyrildever/peeel#readme",
   "peerDependencies": {
-    "es-normalizer": "^1.1.6"
+    "es-normalizer": "^1.1.7"
   },
   "devDependencies": {
     "@types/chai": "^4.2.14",
@@ -38,7 +38,7 @@
     "@typescript-eslint/parser": "~2.30.0",
     "browserify": "16.5.0",
     "chai": "^4.2.0",
-    "es-normalizer": "^1.1.6",
+    "es-normalizer": "^1.1.7",
     "eslint": "~6.8.0",
     "eslint-plugin-no-loops": "~0.3.0",
     "live-server": "^1.2.1",
