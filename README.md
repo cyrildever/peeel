@@ -67,7 +67,7 @@ console.assert(complementaries === compl)
 
 ##### Dependencies
 
-This library relies on the following peer dependency:
+This library relies on the following dependency:
 * [`es-normalizer`](https://www.npmjs.com/package/es-normalizer).
 
 Besides, to run the tests, you would need to install [`live-server`](https://www.npmjs.com/package/live-server):
