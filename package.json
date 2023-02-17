@@ -1,6 +1,6 @@
 {
   "name": "peeel",
-  "version": "1.1.11",
+  "version": "1.2.0",
   "description": "Compact data footprint",
   "main": "dist/lib/src/typescript/index.js",
   "types": "dist/lib/src/typescript/index.d.ts",
@@ -28,26 +28,26 @@
   },
   "homepage": "https://github.com/cyrildever/peeel#readme",
   "dependencies": {
-    "es-normalizer": "^2.2.0"
+    "es-normalizer": "^2.2.1"
   },
   "peerDependencies": {
     "moment": "^2.29.4",
-    "ts-utls": "^1.5.11"
+    "ts-utls": "^1.5.12"
   },
   "devDependencies": {
     "@types/chai": "^4.3.4",
     "@types/mocha": "^10.0.1",
-    "@types/node": "^18.11.17",
-    "@typescript-eslint/eslint-plugin": "^5.46.1",
-    "@typescript-eslint/parser": "^5.46.1",
+    "@types/node": "^18.13.0",
+    "@typescript-eslint/eslint-plugin": "^5.52.0",
+    "@typescript-eslint/parser": "^5.52.0",
     "browserify": "17.0.0",
     "chai": "^4.3.7",
-    "eslint": "^8.30.0",
+    "eslint": "^8.34.0",
     "eslint-plugin-no-loops": "~0.3.0",
     "mocha": "^10.2.0",
     "moment": "^2.29.4",
     "ts-node": "^10.9.1",
-    "ts-utls": "^1.5.11",
-    "typescript": "^4.9.4"
+    "ts-utls": "^1.5.12",
+    "typescript": "^4.9.5"
   }
 }
