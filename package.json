@@ -1,6 +1,6 @@
 {
   "name": "peeel",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Compact data footprint",
   "main": "dist/lib/src/typescript/index.js",
   "types": "dist/lib/src/typescript/index.d.ts",
@@ -18,7 +18,6 @@
     "data",
     "contact",
     "cryptographic hash",
-    "fruuut",
     "empreinte sociometrique"
   ],
   "author": "Cyril Dever <cdever@pep-s.com>",
@@ -28,26 +27,26 @@
   },
   "homepage": "https://github.com/cyrildever/peeel#readme",
   "dependencies": {
-    "es-normalizer": "^2.2.4"
+    "es-normalizer": "^2.2.6"
   },
   "peerDependencies": {
     "moment": "^2.29.4",
-    "ts-utls": "^1.5.16"
+    "ts-utls": "^1.5.18"
   },
   "devDependencies": {
-    "@types/chai": "^4.3.5",
+    "@types/chai": "^4.3.6",
     "@types/mocha": "^10.0.1",
-    "@types/node": "^20.3.2",
-    "@typescript-eslint/eslint-plugin": "^5.60.1",
-    "@typescript-eslint/parser": "^5.60.1",
+    "@types/node": "^20.6.2",
+    "@typescript-eslint/eslint-plugin": "^6.7.0",
+    "@typescript-eslint/parser": "^6.7.0",
     "browserify": "17.0.0",
-    "chai": "^4.3.7",
-    "eslint": "^8.43.0",
+    "chai": "^4.3.8",
+    "eslint": "^8.49.0",
     "eslint-plugin-no-loops": "~0.3.0",
     "mocha": "^10.2.0",
     "moment": "^2.29.4",
     "ts-node": "^10.9.1",
-    "ts-utls": "^1.5.16",
-    "typescript": "^5.1.6"
+    "ts-utls": "^1.5.18",
+    "typescript": "^5.2.2"
   }
 }
