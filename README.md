@@ -74,6 +74,7 @@ Besides, to run the tests, you would need to install [`live-server`](https://www
 ```console
 npm i -g live-server
 ```
+_NB: Change the port number if it's alreayd in use on your machine._
 
 
 ### License
@@ -83,4 +84,4 @@ See the [LICENSE](LICENSE) file.
 
 
 <hr />
-&copy; 2020-2023 Cyril Dever. All rights reserved.
+&copy; 2020-2024 Cyril Dever. All rights reserved.

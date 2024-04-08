@@ -1,13 +1,13 @@
 {
   "name": "peeel",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "Compact data footprint",
   "main": "dist/lib/src/typescript/index.js",
   "types": "dist/lib/src/typescript/index.d.ts",
   "scripts": {
     "compile": "eslint lib --ext .ts && tsc",
     "fix": "eslint lib --ext .ts --fix",
-    "test": "tsc && mocha 'test/src/typescript/node.spec.ts' --require ts-node/register && browserify ./dist/test/src/typescript/browser.spec.js -o dist/test/src/typescript/index.js && live-server --port=9001 --mount=/:test/src/typescript",
+    "test": "tsc && mocha 'test/src/typescript/node.spec.ts' --require ts-node/register && browserify ./dist/test/src/typescript/browser.spec.js -o dist/test/src/typescript/index.js && live-server --port=10001 --mount=/:test/src/typescript",
     "fix-test": "eslint test --ext .ts --fix"
   },
   "repository": {
@@ -27,26 +27,26 @@
   },
   "homepage": "https://github.com/cyrildever/peeel#readme",
   "dependencies": {
-    "es-normalizer": "^2.2.8"
+    "es-normalizer": "^2.2.9"
   },
   "peerDependencies": {
-    "moment": "^2.29.4",
-    "ts-utls": "^1.5.20"
+    "moment": "^2.30.1",
+    "ts-utls": "^1.5.23"
   },
   "devDependencies": {
-    "@types/chai": "^4.3.9",
-    "@types/mocha": "^10.0.3",
-    "@types/node": "^20.8.9",
-    "@typescript-eslint/eslint-plugin": "^6.9.0",
-    "@typescript-eslint/parser": "^6.9.0",
+    "@types/chai": "^4.3.14",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^20.12.5",
+    "@typescript-eslint/eslint-plugin": "^7.5.0",
+    "@typescript-eslint/parser": "^7.5.0",
     "browserify": "17.0.0",
-    "chai": "^4.3.10",
-    "eslint": "^8.52.0",
+    "chai": "^4.4.0",
+    "eslint": "^8.57.0",
     "eslint-plugin-no-loops": "~0.3.0",
-    "mocha": "^10.2.0",
-    "moment": "^2.29.4",
-    "ts-node": "^10.9.1",
-    "ts-utls": "^1.5.20",
-    "typescript": "^5.2.2"
+    "mocha": "^10.4.0",
+    "moment": "^2.30.1",
+    "ts-node": "^10.9.2",
+    "ts-utls": "^1.5.23",
+    "typescript": "^5.4.4"
   }
 }
