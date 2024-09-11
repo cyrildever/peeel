@@ -55,7 +55,7 @@ describe('Complementary', () => {
     it('should only keep valid complementaries', () => {
       const str = 'not-a-compl'
       const found = parseComplementaries(str)
-      found.should.be.empty
+      return found.should.be.empty
     })
   })
 })
