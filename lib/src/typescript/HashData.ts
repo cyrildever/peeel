@@ -58,7 +58,7 @@ export const build = (src: ReadonlyArray<Source>): [HashData, ReadonlyArray<Comp
       compl.push(s.complementary)
     }
     return norm
-  }).filter(_ => _) as ReadonlyArray<string>
+  }).filter(_ => _) as ReadonlyArray<string> // eslint-disable-line @typescript-eslint/strict-boolean-expressions
 
   if (normalized.length === 0) {
     throw new NoValidDataError()

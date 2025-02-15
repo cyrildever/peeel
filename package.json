@@ -1,6 +1,6 @@
 {
   "name": "peeel",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "description": "Compact data footprint",
   "main": "dist/lib/src/typescript/index.js",
   "types": "dist/lib/src/typescript/index.d.ts",
@@ -27,29 +27,29 @@
   },
   "homepage": "https://github.com/cyrildever/peeel#readme",
   "dependencies": {
-    "es-normalizer": "^2.2.10"
+    "es-normalizer": "^2.2.11"
   },
   "peerDependencies": {
     "moment": "^2.30.1",
-    "ts-utls": "^1.5.26"
+    "ts-utls": "^1.5.27"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.1.0",
-    "@eslint/js": "^9.10.0",
+    "@eslint/eslintrc": "^3.2.0",
+    "@eslint/js": "^9.20.0",
     "@types/chai": "^4.3.19",
-    "@types/mocha": "^10.0.7",
-    "@types/node": "^22.5.4",
-    "@typescript-eslint/eslint-plugin": "^8.5.0",
-    "@typescript-eslint/parser": "^8.5.0",
-    "browserify": "17.0.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^22.13.4",
+    "@typescript-eslint/eslint-plugin": "^8.24.0",
+    "@typescript-eslint/parser": "^8.24.0",
+    "browserify": "17.0.1",
     "chai": "^4.5.0",
-    "eslint": "^9.10.0",
+    "eslint": "^9.20.1",
     "eslint-plugin-no-loops": "~0.4.0",
-    "globals": "^15.9.0",
+    "globals": "^15.15.0",
     "mocha": "^10.7.3",
     "moment": "^2.30.1",
     "ts-node": "^10.9.2",
-    "ts-utls": "^1.5.26",
-    "typescript": "^5.6.2"
+    "ts-utls": "^1.5.27",
+    "typescript": "^5.7.3"
   }
 }

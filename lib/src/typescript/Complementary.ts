@@ -45,4 +45,4 @@ export const parseComplementaries = (compl: string): ReadonlyArray<Complementary
     if (availableComplementaries.includes(s)) {
       return s
     }
-  }).filter(_ => _) as ReadonlyArray<Complementary>
+  }).filter(_ => _) as ReadonlyArray<Complementary> // eslint-disable-line @typescript-eslint/strict-boolean-expressions
